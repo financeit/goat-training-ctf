@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
     end
 
     if (@user.id != session[:user_id])
-      flash[:success] = "CTF[DestinsReincarnation]"
+      flash[:success] = "CTF[PowerLevelIntegerOverflow]"
     end
   end
 
