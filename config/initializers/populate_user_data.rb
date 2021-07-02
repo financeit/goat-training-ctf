@@ -91,28 +91,28 @@ POPULATE_WORK_INFO = [
       :income => "$50,000",
       :bonuses => "$10,000",
       :years_worked => 2,
-      :SSN => "666-66-6666",
+      :SSN => "CTF[ToddlerWithAnIPad]",
       :DoB => "01-01-1980"         
     },
     {
       :income => "$40,000",
       :bonuses => "$10,000",
       :years_worked => 1,
-      :SSN => "777-77-7777",
+      :SSN => "CTF[ToddlerWithAnIPad]",
       :DoB => "01-01-1979"         
     },
     {
       :income => "$60,000",
       :bonuses => "$12,000",
       :years_worked => 3,
-      :SSN => "888-88-8888",
+      :SSN => "CTF[ToddlerWithAnIPad]",
       :DoB => "01-01-1981"         
     },
     {
       :income => "$30,000",
       :bonuses => "7,000",
       :years_worked => 1,
-      :SSN => "999-99-9999",
+      :SSN => "CTF[ToddlerWithAnIPad]",
       :DoB => "01-01-1982"         
     }   
   ]

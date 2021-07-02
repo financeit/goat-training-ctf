@@ -5,7 +5,7 @@ class WorkInfo < ApplicationRecord
 
   # We should probably use this
   def last_four
-    "***-**-" << self.decrypt_ssn[-4,4]
+    "***-***-****"
   end
 
   def encrypt_ssn

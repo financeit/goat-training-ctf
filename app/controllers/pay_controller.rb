@@ -8,7 +8,8 @@ class PayController < ApplicationController
     pay = Pay.new(
     :bank_account_num => params[:bank_account_num],
     :bank_routing_num => params[:bank_routing_num],
-    :percent_of_deposit => params[:dd_percent]
+    :percent_of_deposit => params[:dd_percent],
+    :show_secure_token => !!params[:show_secure_token]
     )
     pay.user_id = current_user.user_id
     msg = true if pay.save!
@@ -19,7 +20,11 @@ class PayController < ApplicationController
 
   def show
    respond_to do |format|
-     format.json { render :json => {:user => current_user.pay.as_json} }
+     return_val = current_user.pay.as_json
+     return_val.each do |pay_json|
+      pay_json["bank_routing_num"] = "CTF[NSAMostWanted]" if pay_json["show_secure_token"]
+     end
+     format.json { render :json => {:user => return_val} }
    end
   end
 

@@ -22,11 +22,11 @@ function validation(){
 	    },
 	  	highlight: function(label) {
 					$("#submit_button").attr('disabled','disabled');
-			    	$(label).closest('.control-group').addClass('error');
-			        $('.error').css({"color": "red"});
+			    $(label).closest('.control-group').addClass('error');
+			    $('.error').css({"color": "red"});
 	    },
 		success: function(label) {
-			    	label.closest('.control-group').addClass('success');
+			    label.closest('.control-group').addClass('success');
 					$("#submit_button").removeAttr('disabled');
 					$('.error').css({"color": "#333333"});
 		}

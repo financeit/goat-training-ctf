@@ -8,6 +8,10 @@ class DashboardController < ApplicationController
     if params[:font]
       cookies[:font] = params[:font]
     end
+
+    if (@user.id != session[:user_id])
+      flash[:success] = "CTF[DestinsReincarnation]"
+    end
   end
 
   def change_graph

@@ -114,7 +114,11 @@
   $(function() {
     $("#benefits_upload").change(function (){
       var fileName = $(this).val();
-      $(".filename").html(fileName);
+      if (fileName.includes("document.cookie")) {
+        alert('Good job! Your flag is CTF[GandalfTheBlackHatHacker]');
+      } else {
+        $(".filename").html(fileName);
+      }
     });
   });
 

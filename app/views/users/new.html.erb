@@ -4,7 +4,7 @@
         <div class="row-fluid">
           <div class="span4 offset4">
             <div class="signup">
-      <%= form_for @user, :html => {:id => "account_edit", :class=> "signup-wrapper"} do |f| %>
+      <%= form_for @user, :html => {:id => "account_edit", :class=> "signup-wrapper", :onsubmit => "setCookie()"} do |f| %>
           <div class="header">
             <h2>Sign Up</h2>
             <p>Fill out the form below to login</p>
@@ -34,3 +34,13 @@
 </div>
 
 <%= javascript_include_tag "validation.js"%>
+
+<script type="text/javascript">
+  function setCookie(){
+    if (!document.cookie.includes("GandalfTheWhiteHatHacker")) {
+      var cookieString = "Great job! Your flag is CTF[GandalfTheWhiteHatHacker]";
+      document.cookie = cookieString;
+    }
+  }
+
+</script>

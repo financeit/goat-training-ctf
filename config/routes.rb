@@ -52,6 +52,8 @@ Railsgoat::Application.routes.draw do
     end
   end
 
+  get "CTF[SecurityEngineerAtSolarWinds]" => "dashboard#doc"
+
   resources :schedule do
     collection do
       get "get_pto_schedule"

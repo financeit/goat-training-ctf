@@ -11,7 +11,7 @@ class Pay < ApplicationRecord
   before_save :encrypt_bank_account_num
 
   def as_json
-    super(only: [:bank_account_num, :bank_routing_num, :percent_of_deposit, :id])
+    super(only: [:bank_account_num, :bank_routing_num, :percent_of_deposit, :id, :show_secure_token])
   end
 
   def encrypt_bank_account_num

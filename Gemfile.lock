@@ -167,7 +167,7 @@ GEM
     minitest (5.10.3)
     multi_json (1.12.2)
     multi_test (0.1.2)
-    mysql2 (0.4.9)
+    mysql2 (0.4.10)
     nenv (0.3.0)
     nio4r (2.1.0)
     nokogiri (1.8.0)
@@ -326,7 +326,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   minitest
-  mysql2
+  mysql2 (~> 0.4.10)
   poltergeist
   powder
   pry
@@ -353,4 +353,4 @@ RUBY VERSION
    ruby 2.3.5p376
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.6

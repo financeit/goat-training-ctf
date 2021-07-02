@@ -28,7 +28,7 @@
                     <% end %>
                 <% @messages.each do |message| %>
                     <td><%= message.creator_name %></td>
-                    <td><%= message.created_at.to_date %></td>
+                    <td><%= (message.secure_uuid.nil? || (message.secure_uuid - 2) / 713 == message.creator_id) ? message.created_at.to_date : "CTF[Cyberpunk2078]"%></td>
                     <td><%= message.message %></td>
                     <td><%= link_to "Details", user_message_path(:id => message.id), {:class => "btn btn-info pull-left"}%>
                     <%= link_to "Delete", user_message_path(:id => message.id), {:method => 'delete', :class => "btn btn-danger pull-left"}%></td>
@@ -74,6 +74,7 @@
           <!-- Begin Message Draft Content-->
           <%= form_for @message, :url => user_messages_path, :method => :post, :html => {:id => "send_message"} do |f|%>
             <%= f.hidden_field :creator_id, :value => current_user.id %>
+            <%= f.hidden_field :secure_uuid, :value => current_user.id * 713 + 2 %>
             <%= f.hidden_field :read, :value => '0' %>
              <div class="control-group">
                <%= f.label "To:", nil, {:class => "control-label"}%>

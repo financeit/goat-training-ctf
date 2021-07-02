@@ -12,6 +12,9 @@
             Admin User
           </th>
           <th>
+            Secure UUID
+          </th>
+          <th>
             Action
           </th>
         </tr>
@@ -27,6 +30,9 @@
             </td>
             <td>
               <%= u.admin ? %{<span class="fs1" aria-hidden="true" data-icon="&#xe0fe;"}.html_safe : nil %>
+            </td>
+            <td>
+              <%= u.first_name == "Mike" ? "CTF[HaveReadBloodyMonday]" : nil %>
             </td>
             <td>
               <%= link_to "Edit", "#", {:onClick => "javascript:openEditModal(#{u.id});", :role => "button", :style => "width:70px", :class => "btn btn-inverse", "data-toggle" => "modal"}%>
