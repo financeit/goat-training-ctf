@@ -2,6 +2,90 @@
 
 RailsGoat is a vulnerable version of the Ruby on Rails Framework from versions 3 to 5. It includes vulnerabilities from the OWASP Top 10, as well as some "extras" that the initial project contributors felt worthwhile to share. This project is designed to educate both developers, as well as security professionals.
 
+## CTF Instructions (WIP)
+
+Level: Noob Town
+  - Theme: Just Browsing
+  - Hint: Look around the app for any suspicious information lying around.
+  - Solution: Navigate to the bottom of the PTO tab.
+
+Level: Toddler with an iPad
+  - Theme: Sensitive Data Exposure
+  - Hint: Look for suspicious CSS classes
+  - Solution: Use Inspector to find the hidden CSS class of the SSN column in the Work Info tab.
+
+Level: Have Read Bloody Monday
+  - Theme: Sensitive Data Exposure
+  - Hint: Look for privileged routes that aren't properly protected.
+  - Solution: Navigate to get_all_users and look for a user with exposed Secure UUID.
+
+Level: Security Engineer at SolarWinds
+  - Theme: Security Misconfiguration
+  - Hint: If configured incorrectly, an application will display a full trace instead of a 404 page.
+  - Solution: Go to a non-existent path and look for a flag in the list of routes.
+
+Level: Dollar Store Neo
+  - Theme: User Access Control
+  - Hint: There is an admin-level page that is missing proper access controls.
+  - Solution: Go to /admin/1/dashboard from any non-admin user.
+
+Level: NSA Watchlist
+  - Theme: Insecure Direct Object Reference
+  - Hint: There is a file secret_token.rb which contains sensitive information.
+  - Solution: Use the link for downloading files in the Benefit Forms tab and replace the file name with secret_token.rb.
+
+Level: Greensky Corporate Spy
+  - Theme: Unvalidated Redirects and Forwards
+  - Hint: Try redirecting a user to our company's website.
+  - Solution: Go to /login?url=https://financeit.io and login as a valid user.
+
+Level: Gandalf the Grey-Hat Hacker
+  - Theme: DOM or Python XSS (Cross-Site Scripting)
+  - Hint: You can execute remote commands by browsing to /#test=<script>...</script>.
+  - Solution: Go to /#test=<script>alert(document.cookie)</script>.
+
+Level: Gandalf the White-Hat Hacker
+  - Theme: Stored XSS (Cross-Site Scripting)
+  - Hint: When creating new objects in the DB, you can store JS as an attribute which will be executed whenever it's called.
+  - Solution: Sign up with a new user with a First Name of "<script>alert(document.cookie)</script>".
+
+Level: Gandalf the Black-Hat Hacker
+  - Theme: Reflected XSS (Cross-Site Scripting)
+  - Hint: Uploading files can be used to inject a JS alert. The document's cookie is a good place to start.
+  - Solution: Upload a file named "><img src=1 onerror=alert(document.cookie)>" to the Benefit Forms tab.
+
+Level: NSA Most Wanted
+  - Theme: Cross-Site Request Forgery (CSRF)
+  - Hint: The Pay model has a hidden attribute called show_secure_token which is automatically false if created through the Pay tab.
+  - Solution: Open a script HTML file to create a Pay object with show_secure_token set to true.
+
+Level: Cyberpunk 2078
+  - Theme: Missing Function Level Access Control
+  - Tools: Chrome Inspector or Burpsuite
+  - Hint: Send a tampered message masquerading as another user. View the message.
+  - Solution: Send a message normally and intercept the POST request. Modify the creator_id to another user and send the request.
+
+Level: Destin's Reincarnation
+  - Theme: SQL Injection / Privilege Escalation
+  - Tools: Chrome Inspector
+  - Hint: Use the password change function to change the admin's password. Browse for the flag on privileged pages.
+  - Solution: Intercept a password change POST and modify the user_id with "999') OR admin = 't' --'")". Navigate to Analytics tab.
+
+Level: Power Level Integer Overflow
+  - Theme: Broken Session Management / Privilege Escalation
+  - Tools: Burpsuite
+  - Hint: This application re-uses encryption keys for auth tokens. The admin has a user_id of 1.
+  - Solution: Create a Pay object with all attributes set to 1. Modify the encrypted key to be url-encoded and intercept a GET request with Burpsuite. Navigate to Dashboard tab as admin.
+
+Level: Ne Plus Ultra
+  - Theme: Command Injection
+  - Tools: Burpsuite
+  - Hint: Create a directory called "mischiefmanaged" on the server.
+  - Solution: Intercept an upload/download request, modify the "benefits[backup]" to true, and append ";+mkdir+mischiefmanaged" to the filename. Navigate to Benefit Forms tab.
+
+
+
+
 ## Support
 
 If you are looking for support or troubleshooting assistance, please visit our [OWASP Slack Channel](https://owasp.slack.com/messages/project-railsgoat/).
