@@ -399,6 +399,51 @@ Case Sensitive Flag: HV15-GnUj-1YQ7-vdYC-2wlr-E6xj (sha1 0d353038908ad0fc8c51a53
 For a more involved coding, exercise, every participant is welcome to and encouraged to set up the original RailsGoat application here: https://github.com/OWASP/railsgoat
 
 The original application is not a CTF, but contains many of the same vulnerabilities as well as tests which are failing to start with. For extra training, please modify the code itself to try and patch the different vulnerabilities across the application; each test should go from failing to pending as each exploit is patched.
+
+
+## Setting Up CTF Locally
+
+To begin, if you do not have Ruby, Git, MySQL, and Postgres, we suggest
+using this [site](https://gorails.com/setup) to install the software.
+Pick the appropriate operating system and follow the instructions.
+
+After installing the above software, clone this repo:
+
+```bash
+$ git clone git@github.com:OWASP/railsgoat.git
+```
+
+**NOTE: NOT NECESSARY IF YOU WANT TO WORK WITH RAILS 6.** Otherwise, if you wish to use the Rails 3 or 4 versions, you'll need to switch branches:
+
+```bash
+$ cd railsgoat
+$ git checkout rails_3_2
+$ git checkout rails_4_2
+```
+
+Navigate into the directory (already there if you followed the previous step) and install the dependencies:
+
+```bash
+$ bundle install
+```
+
+If you receive an error, make sure you have `bundler` installed:
+
+```bash
+$ gem install bundler
+```
+
+Initialize the database:
+
+```bash
+$ rails db:setup
+```
+
+Start the Thin web server:
+
+```bash
+$ rails server
+```
   
 
 ## License
