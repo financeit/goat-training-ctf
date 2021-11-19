@@ -6,17 +6,17 @@ users = [
      {
        :email => "admin@metacorp.com",
        :admin => true,
-       :password => "admin1234",
-       :password_confirmation => "admin1234",
+       :password => "beyblade",
+       :password_confirmation => "beyblade",
        :first_name => "Admin",
        :last_name => "",
-       :user_id =>1
+       :user_id => 1
       },
      {
        :email => "jack@metacorp.com",
        :admin => false,
-       :password => "yankeessuck",
-       :password_confirmation => "yankeessuck",
+       :password => "digimon",
+       :password_confirmation => "digimon",
        :first_name => "Jack",
        :last_name => "Mannino",
        :user_id => 2
@@ -24,29 +24,29 @@ users = [
      {
        :email => "jim@metacorp.com",
        :admin => false,
-       :password => "alohaowasp",
-       :password_confirmation => "alohaowasp",
+       :password => "pokemon",
+       :password_confirmation => "pokemon",
        :first_name => "Jim",
        :last_name => "Manico",
-       :user_id =>3
+       :user_id => 3
      },
      {
        :email => "mike@metacorp.com",
        :admin => false,
-       :password => "motocross1445",
-       :password_confirmation => "motocross1445",
+       :password => "bakugan",
+       :password_confirmation => "bakugan",
        :first_name => "Mike",
        :last_name => "McCabe",
-       :user_id =>4
+       :user_id => 4
       },
      {
        :email => "ken@metacorp.com",
        :admin => false,
-       :password => "citrusblend",
-       :password_confirmation => "citrusblend",
+       :password => "yugioh",
+       :password_confirmation => "yugioh",
        :first_name => "Ken",
        :last_name => "Johnson",
-       :user_id =>5
+       :user_id => 5
       }
 ]
 
@@ -263,12 +263,13 @@ paid_time_off = [
     }
   ]
 
-
+=begin
 users.each do |user_info|
   user = User.new(user_info.reject {|k| k == :user_id })
   user.user_id = user_info[:user_id]
   user.save!
 end
+=end
 
 retirements.each do |r|
  ret = Retirement.new(r.reject {|k| k == :user_id})
@@ -305,6 +306,62 @@ work_info.each do |wi|
   info.user_id = wi[:user_id]
   info.save!
 end
+
+for index in 1..500
+  user_type = index % 5
+  id_num = (index - 1) / 5
+  info_hash = case user_type
+              when 1
+                {
+                  :email => "admin_#{id_num}@metacorp.com",
+                  :admin => true,
+                  :password => "beyblade",
+                  :password_confirmation => "beyblade",
+                  :first_name => "Admin",
+                  :last_name => ""
+                }
+              when 2
+                {
+                  :email => "jack_#{id_num}@metacorp.com",
+                  :admin => false,
+                  :password => "digimon",
+                  :password_confirmation => "digimon",
+                  :first_name => "Jack",
+                  :last_name => "Mannino"
+                }
+              when 3
+                {
+                  :email => "jim_#{id_num}@metacorp.com",
+                  :admin => false,
+                  :password => "pokemon",
+                  :password_confirmation => "pokemon",
+                  :first_name => "Jim",
+                  :last_name => "Manico"
+                }
+              when 4
+                {
+                  :email => "mike_#{id_num}@metacorp.com",
+                  :admin => false,
+                  :password => "bakugan",
+                  :password_confirmation => "bakugan",
+                  :first_name => "Mike",
+                  :last_name => "McCabe"
+                }
+              when 0
+                {
+                  :email => "ken_#{id_num}@metacorp.com",
+                  :admin => false,
+                  :password => "yugioh",
+                  :password_confirmation => "yugioh",
+                  :first_name => "Ken",
+                  :last_name => "Johnson"
+                }
+              end
+  user = User.new(info_hash.reject {|k| k == :user_id })
+  user.user_id = index
+  user.save!
+end
+
 
 
 =begin
